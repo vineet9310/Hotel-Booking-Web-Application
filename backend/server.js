@@ -9,6 +9,10 @@ app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI).then(() => console.log("MongoDB connected"));
 
+app.use('/', (res, req) => {
+  res.send("API is running");
+})
+
 app.use('/auth', require('./routes/auth'));
 app.use('/rooms', require('./routes/rooms'));
 app.use('/bookings', require('./routes/bookings'));
